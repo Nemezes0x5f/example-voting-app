@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: result-svc
+    app: demo-voting-app
+  name: result-svc
+spec:
+  ports:
+  - name: 80-80
+    nodePort: 30005
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    name: result-app-pod
+    app: demo-voting-app
+  type: NodePort
+status:
+  loadBalancer: {}
